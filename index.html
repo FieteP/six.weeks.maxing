@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6-Wochen Body-Max Plan</title>
+  <style>
+    :root {
+      --primary: #487c9c;
+      --secondary: #f1f1f1;
+      --accent: #FF9800;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--secondary);
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    details {
+      margin: 1rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      background: white;
+      transform-origin: top;
+    }
+
+    summary {
+      padding: 1rem;
+      cursor: pointer;
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    summary:hover {
+      background-color: #487c9c;
+    }
+
+    details[open] summary::after {
+      content: "▲";
+      float: right;
+    }
+
+    summary::after {
+      content: "▼";
+      float: right;
+      transition: transform 0.3s ease;
+    }
+
+    .content {
+      padding: 1rem;
+      line-height: 1.6;
+      animation: growDown 0.4s ease forwards;
+      transform-origin: top;
+      z-index: 1;
+    }
+
+    @keyframes growDown {
+      0% { transform: scaleY(0); opacity: 0; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      list-style-type: disc;
+    }
+
+    li {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    @keyframes flyIn {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+
+    table {
+      width: 100%;
+      min-width: 400px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: white;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const detailsElements = document.querySelectorAll("details");
+
+      detailsElements.forEach(details => {
+        details.addEventListener("toggle", () => {
+          if (details.open) {
+            // Schließe alle anderen
+            detailsElements.forEach(other => {
+              if (other !== details) {
+                other.removeAttribute("open");
+              }
+            });
+
+            const content = details.querySelector('.content');
+            content.style.animation = "none";
+            content.offsetHeight;
+            content.style.animation = "growDown 0.4s ease forwards";
+
+            const lis = content.querySelectorAll("li");
+            lis.forEach((li, index) => {
+              li.style.animation = "none";
+              li.offsetHeight;
+              li.style.animation = `flyIn 0.4s ease forwards ${0.1 * (index + 1)}s`;
+            });
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>6-Wochen Body-Max Plan</header>
+  <div class="container">
+    <details>
+      <summary>🏋️‍♂️ Training</summary>
+      <div class="content">
+        <ul>
+          <li>3–5x pro Woche Krafttraining (Ganzkörper oder Push/Pull/Legs)</li>
+          <li>Wichtige Übungen: Liegestütze, Klimmzüge, Kniebeugen, Planks</li>
+          <li>Mobilitätstraining 2x/Woche, HIIT 2x/Woche</li>
+          <li>Supersätze und 3–4 Sätze mit 8–12 Wiederholungen</li>
+        </ul>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Muskelgruppe</th>
+                <th>Übung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Brust</td><td>Liegestütze (variieren: breit, eng)</td></tr>
+              <tr><td>Rücken</td><td>Klimmzüge</td></tr>
+              <tr><td>Schultern</td><td>Pike Push-ups / Seitheben mit Gewicht</td></tr>
+              <tr><td>Beine</td><td>Kniebeugen, Ausfallschritte</td></tr>
+              <tr><td>Bauch</td><td>Beinheben, Plank, Russian Twists</td></tr>
+              <tr><td>Arme</td><td>Dips, Curls</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🥦 Ernährung</summary>
+      <div class="content">
+        <ul>
+          <li>Proteinreich: Quark, Eier, Fisch, Tofu, Whey</li>
+          <li>Komplexe Kohlenhydrate: Haferflocken, Vollkorn, Reis</li>
+          <li>Gesunde Fette: Nüsse, Avocado, Olivenöl</li>
+          <li>Wenig Zucker, viel Wasser (2–3L pro Tag)</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>😴 Schlaf</summary>
+      <div class="content">
+        <ul>
+          <li>8–9 Stunden Schlaf täglich</li>
+          <li>Kein Handy 1 Stunde vor dem Schlafen</li>
+          <li>Dunkles, kühles Zimmer, feste Schlafenszeit</li>
+          <li>Magnesium abends hilft beim Einschlafen</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🧠 Mentale Stärke</summary>
+      <div class="content">
+        <ul>
+          <li>Visualisiere dein Ziel täglich für 1–2 Minuten</li>
+          <li>Tracke deine Fortschritte mit Fotos und Notizen</li>
+          <li>Vergleiche dich nicht mit anderen - <br> Sei einfach besser als du es gestern warst.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>📅 Wochenplan (Beispiel)</summary>
+      <div class="content">
+        <ul>
+          <li><strong>Montag:</strong> Kraft (Ganzkörper) + Bauch</li>
+          <li><strong>Dienstag:</strong> Cardio + Mobility</li>
+          <li><strong>Mittwoch:</strong> Kraft</li>
+          <li><strong>Donnerstag:</strong> Pause oder Dehnen</li>
+          <li><strong>Freitag:</strong> Kraft + Bauch</li>
+          <li><strong>Samstag:</strong> HIIT oder Sport</li>
+          <li><strong>Sonntag:</strong> Pause & Erholung</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</body>
+</html>
