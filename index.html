@@ -1,245 +1,128 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>6-Wochen Body-Max Plan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snoozely - Schlafzeiten</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --primary: #487c9c;
-      --secondary: #f1f1f1;
-      --accent: #FF9800;
-      --text: #333;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--secondary);
-      color: var(--text);
-    }
-
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1.5rem;
+    select, input[type="time"] {
+      color: black;
       text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
     }
-
-    .container {
-      padding: 1rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    details {
-      margin: 1rem 0;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
-      background: white;
-      transform-origin: top;
-    }
-
-    summary {
-      padding: 1rem;
-      cursor: pointer;
-      background-color: var(--primary);
-      color: white;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: background-color 0.3s;
-      position: relative;
-      z-index: 2;
-    }
-
-    summary:hover {
-      background-color: #487c9c;
-    }
-
-    details[open] summary::after {
-      content: "▲";
-      float: right;
-    }
-
-    summary::after {
-      content: "▼";
-      float: right;
-      transition: transform 0.3s ease;
-    }
-
-    .content {
-      padding: 1rem;
-      line-height: 1.6;
-      animation: growDown 0.4s ease forwards;
-      transform-origin: top;
-      z-index: 1;
-    }
-
-    @keyframes growDown {
-      0% { transform: scaleY(0); opacity: 0; }
-      100% { transform: scaleY(1); opacity: 1; }
-    }
-
-    ul {
-      padding-left: 1.2rem;
-      list-style-type: disc;
-    }
-
-    li {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-
-    @keyframes flyIn {
-      from {
-        opacity: 0;
-        transform: translateX(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .table-wrapper {
-      overflow-x: auto;
-      margin-top: 1rem;
-    }
-
-    table {
-      width: 100%;
-      min-width: 400px;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-      text-align: left;
-    }
-
-    th {
-      background-color: var(--primary);
-      color: white;
+    label {
+      display: block;
+      text-align: center;
     }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const detailsElements = document.querySelectorAll("details");
-
-      detailsElements.forEach(details => {
-        details.addEventListener("toggle", () => {
-          if (details.open) {
-            // Schließe alle anderen
-            detailsElements.forEach(other => {
-              if (other !== details) {
-                other.removeAttribute("open");
-              }
-            });
-
-            const content = details.querySelector('.content');
-            content.style.animation = "none";
-            content.offsetHeight;
-            content.style.animation = "growDown 0.4s ease forwards";
-
-            const lis = content.querySelectorAll("li");
-            lis.forEach((li, index) => {
-              li.style.animation = "none";
-              li.offsetHeight;
-              li.style.animation = `flyIn 0.4s ease forwards ${0.1 * (index + 1)}s`;
-            });
-          }
-        });
-      });
-    });
-  </script>
 </head>
-<body>
-  <header>6-Wochen Body-Max Plan</header>
-  <div class="container">
-    <details>
-      <summary>🏋️‍♂️ Training</summary>
-      <div class="content">
-        <ul>
-          <li>3–5x pro Woche Krafttraining (Ganzkörper oder Push/Pull/Legs)</li>
-          <li>Wichtige Übungen: Liegestütze, Klimmzüge, Kniebeugen, Planks</li>
-          <li>Mobilitätstraining 2x/Woche, HIIT 2x/Woche</li>
-          <li>Supersätze und 3–4 Sätze mit 8–12 Wiederholungen</li>
-        </ul>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Muskelgruppe</th>
-                <th>Übung</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Brust</td><td>Liegestütze (variieren: breit, eng)</td></tr>
-              <tr><td>Rücken</td><td>Klimmzüge</td></tr>
-              <tr><td>Schultern</td><td>Pike Push-ups / Seitheben mit Gewicht</td></tr>
-              <tr><td>Beine</td><td>Kniebeugen, Ausfallschritte</td></tr>
-              <tr><td>Bauch</td><td>Beinheben, Plank, Russian Twists</td></tr>
-              <tr><td>Arme</td><td>Dips, Curls</td></tr>
-            </tbody>
-          </table>
+<body class="bg-gray-900 text-gray-100 font-sans transition-colors">
+  <div class="min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-md p-6 space-y-6 bg-gray-800 rounded-lg shadow-lg">
+      <div class="flex flex-col items-center mb-4">
+        <h1 class="text-2xl md:text-3xl font-bold text-center">Snoozely</h1>
+        <h2 class="text-xl md:text-1xl font-bold text-center mt-1">- Der Schlafzeiten Rechner</h2>
+      </div>
+
+      <div>
+        <label class="mb-2 font-semibold">Altersgruppe:</label>
+        <select id="ageGroup" class="w-full p-2 text-sm md:text-base border rounded text-black">
+          <option value="infant">Kleinkinder (0-3 Jahre)</option>
+          <option value="child">Kinder (4-12 Jahre)</option>
+          <option value="teen" selected>Teenager (13-17 Jahre)</option>
+          <option value="adult">Erwachsene (18-64 Jahre)</option>
+          <option value="senior">Senioren (65+ Jahre)</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="mb-2 font-semibold">Ziel:</label>
+        <select id="goal" class="w-full p-2 text-sm md:text-base border rounded text-black">
+          <option value="balanced">🎯 Ausgeglichen Alltag</option>
+          <option value="muscle" selected>🏋️ Muskelaufbau</option>
+          <option value="recovery">🧘 Regeneration/Stressabbau</option>
+          <option value="focus">⚡ Wach & fokussiert</option>
+          <option value="performance">🏃 Performance/Training</option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <label class="mb-2 font-semibold block text-center">Aufstehzeit:</label>
+        <div class="flex justify-center">
+          <input type="time" id="wakeUpTime" class="w-48 p-2 text-sm md:text-base border rounded text-center" value="07:00" />
         </div>
       </div>
-    </details>
 
-    <details>
-      <summary>🥦 Ernährung</summary>
-      <div class="content">
-        <ul>
-          <li>Proteinreich: Quark, Eier, Fisch, Tofu, Whey</li>
-          <li>Komplexe Kohlenhydrate: Haferflocken, Vollkorn, Reis</li>
-          <li>Gesunde Fette: Nüsse, Avocado, Olivenöl</li>
-          <li>Wenig Zucker, viel Wasser (2–3L pro Tag)</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>😴 Schlaf</summary>
-      <div class="content">
-        <ul>
-          <li>8–9 Stunden Schlaf täglich</li>
-          <li>Kein Handy 1 Stunde vor dem Schlafen</li>
-          <li>Dunkles, kühles Zimmer, feste Schlafenszeit</li>
-          <li>Magnesium abends hilft beim Einschlafen</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>🧠 Mentale Stärke</summary>
-      <div class="content">
-        <ul>
-          <li>Visualisiere dein Ziel täglich für 1–2 Minuten</li>
-          <li>Tracke deine Fortschritte mit Fotos und Notizen</li>
-          <li>Vergleiche dich nicht mit anderen - <br> Sei einfach besser als du es gestern warst.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>📅 Wochenplan (Beispiel)</summary>
-      <div class="content">
-        <ul>
-          <li><strong>Montag:</strong> Kraft (Ganzkörper) + Bauch</li>
-          <li><strong>Dienstag:</strong> Cardio + Mobility</li>
-          <li><strong>Mittwoch:</strong> Kraft</li>
-          <li><strong>Donnerstag:</strong> Pause oder Dehnen</li>
-          <li><strong>Freitag:</strong> Kraft + Bauch</li>
-          <li><strong>Samstag:</strong> HIIT oder Sport</li>
-          <li><strong>Sonntag:</strong> Pause & Erholung</li>
-        </ul>
-      </div>
-    </details>
+      <div id="result" class="text-center font-semibold text-lg"></div>
+      <div id="recommendation" class="text-sm md:text-base text-center font-medium"></div>
+    </div>
   </div>
+
+  <script>
+    const baseRanges = {
+      infant: [12, 17],
+      child: [9, 12],
+      teen: [8, 10],
+      adult: [7, 9],
+      senior: [7, 8]
+    };
+
+    const goalAdjustments = {
+      balanced: 0,
+      muscle: 0.5,
+      recovery: 0.25,
+      focus: 0.25,
+      performance: 0.5
+    };
+
+    function formatHours(value) {
+      return value % 1 === 0 ? Math.round(value) : value.toFixed(1);
+    }
+
+  function calculateSleep() {
+  const ageGroup = document.getElementById('ageGroup').value;
+  const goal = document.getElementById('goal').value;
+  const wakeUp = document.getElementById('wakeUpTime').value;
+
+  const [minBase, maxBase] = baseRanges[ageGroup];
+  const adjustment = goalAdjustments[goal];
+  const minSleep = minBase + adjustment;
+  const maxSleep = maxBase + adjustment;
+
+  const [hours, minutes] = wakeUp.split(":").map(Number);
+  const wakeMinutes = hours * 60 + minutes;
+
+  const sleepStartMin = wakeMinutes - (maxSleep * 60);
+  const sleepStartMax = wakeMinutes - (minSleep * 60);
+
+  const toTime = mins => {
+    let h = Math.floor((mins + 1440) % 1440 / 60);
+    let m = (mins + 1440) % 60;
+    return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+  };
+
+  const result = document.getElementById('result');
+  result.innerHTML = `Empfohlene Schlafenszeit: <br> <span class="text-blue-400 font-semibold">${toTime(sleepStartMin)}</span> - <span class="text-blue-400 font-semibold">${toTime(sleepStartMax)}</span> 💤<br>` +
+                     `Optimal: <span style="color: #22c55e;">${formatHours(minSleep)}</span> - <span style="color: #22c55e;">${formatHours(maxSleep)}</span> Stunden`;
+
+  const recommendation = document.getElementById('recommendation');
+  recommendation.innerHTML = `📱 Tipp: Vermeide mindestens <strong>30 Minuten vor dem Schlafen</strong> Bildschirme und sorge für eine ruhige, dunkle Umgebung.`;
+}
+
+
+    calculateSleep();
+
+    document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Verhindert ggf. das Absenden von Formularen oder andere Default-Aktionen
+    calculateSleep();
+  }
+});
+
+document.getElementById('ageGroup').addEventListener('change', calculateSleep);
+document.getElementById('goal').addEventListener('change', calculateSleep);
+document.getElementById('wakeUpTime').addEventListener('input', calculateSleep);
+
+  </script>
 </body>
 </html>
